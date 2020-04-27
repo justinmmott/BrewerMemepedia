@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import MemeCard from './MemeCard';
 import Meme from './Meme';
-import { db, id } from './../firebase/firebase';
+import { db } from './../firebase/firebase';
 import './../css/mainpage.css';
 
 const MainPage = () => {
@@ -14,7 +14,8 @@ const MainPage = () => {
     });
 
     const getMemes = async () => {
-        let query = await db.collection('memes').orderBy(id).limit(2).get();
+        const random = Math.random();
+        let query = await db.collection('memes').where('random', '<=', random).orderBy('random', "desc").limit(3).get();
         query.forEach((doc) => {
             setMemes(memes => [...memes, doc.data()]);
         });

@@ -1,12 +1,13 @@
 import React from 'react';
 import {
     BrowserRouter as Router,
-    // Switch,
-    // Route,
+    Switch,
+    Route,
     Link
 } from "react-router-dom";
 
 import MainPage from './MainPage';
+import RandomPage from './RandomPage';
 import './../css/home.css'
 
 const Home = () => {
@@ -42,7 +43,14 @@ const Home = () => {
                     </ul>
                 </nav>
                 <main>
-                    <MainPage />
+                    <Switch>
+                        <Route path="/random">
+                            <RandomPage />
+                        </Route>
+                        <Route path="/">
+                            <MainPage />
+                        </Route>
+                    </Switch>
                 </main>
             </Router>
         </div>
