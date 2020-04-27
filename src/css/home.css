@@ -2,15 +2,16 @@
     font-size: 16px;
     --text-primary: #b6b6b6;
     --text-secondary: #ececee;
-    --bg-primary: #420420;
-    --bg-secondary: #bedbae;
+    --bg-primary: white;
+    --bg-secondary: #420420;
+    --bg-tertiary: #69ABAE;
     --fa-primary: #69420d;
     --trainsition-speed: 500ms;
 }
 
 .homePage {
-    color: black;
-    background-color: white;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
     margin: 0;
     padding: 0;
 }
@@ -22,7 +23,7 @@ main {
 
 .navbar {
     position: fixed;
-    background-color: var(--bg-primary);
+    background-color: var(--bg-secondary);
     transition: width 200ms ease;
 }
 
@@ -56,7 +57,7 @@ main {
 
 .nav-link:hover { 
     filter: grayscale(0%);
-    background: var(--bg-secondary);
+    background: var(--bg-tertiary);
     color: var(--text-secondary);
 }
 
@@ -79,7 +80,7 @@ main {
     margin-bottom: 1.5rem;
     text-align: center;
     color: var(--text-secondary);
-    background: var(--bg-secondary);
+    background: var(--bg-tertiary);
     font-size: 1rem;
     letter-spacing: 03.ch;
     width: 100%

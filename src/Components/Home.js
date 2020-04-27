@@ -22,9 +22,9 @@ const Home = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/inject" className="nav-link">
-                                <div className="fas fa-syringe icon"></div>
-                                <span className="link-text">Inject</span>
+                            <Link to="/random" className="nav-link">
+                                <div className="fas fa-random icon"></div>
+                                <span className="link-text">Random</span>
                             </Link>
                         </li>
                         <li className="nav-item">

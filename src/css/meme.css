@@ -8,18 +8,6 @@
     "desc desc image image";
 }
 
-
-@media only screen and (max-width: 768px) {
-    .memePage {
-        grid-template-columns: auto;
-        grid-template-rows: .25fr 1fr 2fr;
-        grid-template-areas: 
-        "header"
-        "image"
-        "desc";
-    }    
-}
-
 .memeNameWrapper {
     padding: 20px 20px 0px 20px;
     grid-area: header;
@@ -57,4 +45,14 @@
     justify-content: center;
 }
 
+@media only screen and (max-width: 768px) {
+    .memePage {
+        grid-template-columns: auto;
+        grid-template-rows: .25fr 1fr 2fr;
+        grid-template-areas: 
+        "header"
+        "image"
+        "desc";
+    }    
+}
 
