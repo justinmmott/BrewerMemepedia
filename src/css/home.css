@@ -1,0 +1,143 @@
+:root {
+    font-size: 16px;
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececee;
+    --bg-primary: #420420;
+    --bg-secondary: #bedbae;
+    --fa-primary: #69420d;
+    --trainsition-speed: 500ms;
+}
+
+.homePage {
+    color: black;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin-left: 6rem;
+    padding: 1rem;
+}
+
+.navbar {
+    position: fixed;
+    background-color: var(--bg-primary);
+    transition: width 200ms ease;
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-item {
+    width: 100%;
+}
+
+.nav-item:last-child {
+    margin-top: auto;
+}
+
+.nav-link {
+    display:flex;
+    align-items: center;
+    height: 6rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    filter: grayscale(75%) opacity(0.7);
+    transition: var(--trainsition-speed);
+}
+
+.nav-link:hover { 
+    filter: grayscale(0%);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+.link-text {
+    opacity: 0;
+    visibility: hidden;
+    margin-left: 1rem;
+}
+
+.icon {
+    min-width: 3rem;
+    height: 5rem;
+    margin: 0 1.5rem;
+    color: var(--fa-primary);
+}
+
+.logo {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    font-size: 1rem;
+    letter-spacing: 03.ch;
+    width: 100%
+}
+
+.logo .icon {
+    transform: rotate(0deg);
+    transition:  transform var(--trainsition-speed);
+}
+
+.navbar:hover .logo .icon {
+    transform: rotate(-180deg);
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        bottom: 0;
+        width: 100vw;
+        height: 6rem;
+    }
+    
+    .logo {
+        display: none;
+    }
+
+    .icon {
+        position: absolute;
+    }
+
+    .navbar-nav {
+        flex-direction: row;
+    }
+
+    .nav-link {
+        justify-content: center;
+    }
+
+    main {
+        margin: 0;
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar {
+        top: 0;
+        width: 6rem;
+        height: 100vh;
+    }
+
+    .navbar:hover {
+        width: 16rem;
+    }
+
+    .navbar:hover .link-text {
+        visibility: visible;
+        opacity: 1;
+        font-size: 1rem;
+        transition: opacity var(--trainsition-speed), visibility var(--trainsition-speed);
+    }
+}

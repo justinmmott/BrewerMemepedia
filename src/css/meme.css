@@ -1,0 +1,60 @@
+.memePage {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 600px;
+    grid-template-areas: 
+    "header header header header"
+    "desc desc image image";
+}
+
+
+@media only screen and (max-width: 768px) {
+    .memePage {
+        grid-template-columns: auto;
+        grid-template-rows: .25fr 1fr 2fr;
+        grid-template-areas: 
+        "header"
+        "image"
+        "desc";
+    }    
+}
+
+.memeNameWrapper {
+    padding: 20px 20px 0px 20px;
+    grid-area: header;
+}
+
+.memeName {
+    font-size: 3em;
+    border-bottom: 1px solid;
+}
+
+.desc {
+    grid-area: desc;
+    font-size: 1.5em;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.memeImage {
+    grid-area: image;
+}
+
+.image {
+    max-width: 100%;
+}
+
+.loader {
+    height: 100px;
+    width: 100px;
+}
+
+.loader-wrapper {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
