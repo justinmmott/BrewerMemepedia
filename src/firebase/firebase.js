@@ -16,3 +16,4 @@ export const db = firebase.firestore();
 export const storage = firebase.storage();
 export const id = firebase.firestore.FieldPath.documentId();
 export const auth = firebase.auth();
+export const googleSignIn = new firebase.auth.GoogleAuthProvider();

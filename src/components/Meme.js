@@ -14,15 +14,21 @@ const Meme = (props) => {
     });
 
     const getMeme = async () => {
-        let query = await db.collection('memes').doc(props.meme).get();
+        let docRef = db.collection('memes').doc(props.meme);
+        let query = await docRef.get();
         query = query.data();
+        setMeme(query);
+
         let picture = await storage.ref().child(`memePictures/${query['image']}`).getDownloadURL();
 
         let date = query['date'].toDate().toDateString();
 
-        setMeme(query);
         setMemeDate(date)
         setMemePicture(picture);
+        
+        await docRef.update({
+            "visits": query['visits'] + 1 ,
+        });
     };
 
     return (

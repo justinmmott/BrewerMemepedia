@@ -14,8 +14,7 @@ const MainPage = () => {
     });
 
     const getMemes = async () => {
-        const random = Math.random();
-        let query = await db.collection('memes').where('random', '<=', random).orderBy('random', "desc").limit(3).get();
+        let query = await db.collection('memes').orderBy('visits', "desc").limit(3).get();
         query.forEach((doc) => {
             setMemes(memes => [...memes, doc.data()]);
         });
