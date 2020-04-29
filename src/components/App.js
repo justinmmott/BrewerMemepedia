@@ -15,8 +15,11 @@ const App = () => {
         <Loader type="Oval" color="#69abed" className="loader" />
       </div>
       :
-      user  ?
-        <Home />
+      user ?
+        user.emailVerified ? 
+          <Home /> 
+          :
+          <div>Please Verify Email</div>
         :
         <LoginPage />
   );

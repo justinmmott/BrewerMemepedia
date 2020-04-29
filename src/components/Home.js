@@ -3,7 +3,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    Redirect
 } from "react-router-dom";
 
 import MainPage from './MainPage';
@@ -20,7 +21,7 @@ const Home = () => {
                 <nav className="navbar">
                     <ul className="navbar-nav">
                         <li className="logo">
-                            <Link to="/logout" className="nav-link">
+                            <Link to="/home" className="nav-link">
                                 <div className="fas fa-angle-double-left icon" ></div>
                                 <span className="link-text">Memepedia</span>
                             </Link>
@@ -44,7 +45,7 @@ const Home = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/" className="nav-link" onClick={ signOut}>
+                            <Link to="/" className="nav-link" onClick={signOut}>
                                 <div className="fas fa-sign-out-alt icon"></div>
                                 <span className="link-text">Logout</span>
                             </Link>
@@ -58,6 +59,9 @@ const Home = () => {
                         </Route>
                         <Route path="/addMeme">
                             <AddMemePage />
+                        </Route>
+                        <Route path="/home">
+                            <Redirect to="/" />
                         </Route>
                         <Route path="/">
                             <MainPage />

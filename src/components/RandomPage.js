@@ -17,7 +17,7 @@ const RandomPage = () => {
         let query = await db.collection('memes').where('random', condition === 'less' ? '<=' : '>=', random).orderBy('random', "desc").limit(1).get();
         let docID;
         query.forEach((doc) => {
-            docID = doc.data()['id'];
+            docID = doc.id;
         });
         if(!docID) {
             getMemeID(random, 'greater');

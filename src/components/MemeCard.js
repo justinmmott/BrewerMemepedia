@@ -20,7 +20,7 @@ const MemeCard = (props) => {
 
     return (
         <div className="card-wrapper">
-            <Link to={`/meme?id=${props.meme['id']}`} className="link">
+            <Link to={`/meme?id=${props.id}`} onClick={() => {props.loader(true)}} className="link">
                 <div className="card-shadow">
                     <div className="card">
                         {!picture ?

@@ -72,7 +72,6 @@ main {
     text-align: center;
     background: var(--bg-tertiary);
     font-size: 1rem;
-    letter-spacing: 03.ch;
     width: 100%
 }
 

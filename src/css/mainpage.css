@@ -3,10 +3,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
  @media only screen and (max-width: 1028px) {
     .cards {
         flex-direction: column;
     }    
+ }
+
+ .loader {
+    height: 100px;
+    width: 100px;
+}
+
+.loader-wrapper {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
