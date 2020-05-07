@@ -69,7 +69,7 @@ const Meme = (props) => {
                     <MdEditor
                         value={desc}
                         renderHTML={(text) => <Markdown source={text} />}
-                        style={{ height: "50vh" }}
+                        style={{ height: "50vh", zIndex: -1 }}
                         onChange={({ text }) => setDesc(text)}
                     />
                     <div className="edit-input" >
