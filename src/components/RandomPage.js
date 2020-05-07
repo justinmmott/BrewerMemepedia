@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from "react-router-dom";
+import { navigate } from "hookrouter";
 import Loader from 'react-loader-spinner'
 
 import { db } from './../firebase/firebase';
@@ -19,19 +19,18 @@ const RandomPage = () => {
         query.forEach((doc) => {
             docID = doc.id;
         });
-        if(!docID) {
+        if (!docID) {
             getMemeID(random, 'greater');
             return;
         }
         setMemeID(docID);
+        navigate(`/meme/${docID}`, true);
     };
 
     return (
-        memeID ?
-            <Redirect to={`/meme?id=${memeID}`} /> :
-            <div className="loader-wrapper">
-                <Loader type="Oval" color="#69abed" className="loader" />
-            </div>
+        <div className="loader-wrapper">
+            <Loader type="Oval" color="#69abed" className="loader" />
+        </div>
     );
 
 }

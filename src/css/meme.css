@@ -13,6 +13,12 @@
     grid-area: header;
 }
 
+.memeEdit {
+    cursor: pointer;
+    width: 3vh;
+    height: 3vh;
+}
+
 .memeName {
     font-size: 3em;
     border-bottom: 1px solid;
@@ -31,6 +37,55 @@
 
 .image {
     max-width: 100%;
+}
+
+.edit-buttons{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.submit-edits {
+    margin-top: 15px;    
+    display: flex;
+    width: 30%;
+    height: 4.5vh;
+    min-height: 40px;
+    border: none;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: 500ms;
+    background: linear-gradient(120deg,#69ABED, #EA7A55);
+    background-size: 200%;
+    /* text-align: center; */
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-edits:hover {
+    background-position: right;
+}
+
+.cancel-edits {
+    margin-top: 15px;    
+    display: flex;
+    width: 30%;
+    height: 4.5vh;
+    min-height: 40px;
+    border: none;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: 500ms;
+    background: linear-gradient(120deg,#69ABED, #EA7A55);
+    background-size: 200%;
+    justify-content: center;
+    align-items: center;
+}
+
+.cancel-edits:hover {
+    background-position: right;
 }
 
 @media only screen and (max-width: 768px) {

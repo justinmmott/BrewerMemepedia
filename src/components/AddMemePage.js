@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
-import { withRouter } from "react-router-dom";
+import { useAuthState } from 'react-firebase-hooks/auth';
 
-import { db, storage } from './../firebase/firebase';
+import { db, storage, auth } from './../firebase/firebase';
 import './../css/addmemepage.css';
 
 
-const AddMemePage = (props) => {
+function AddMemePage() {
     const [memeName, setMemeName] = useState('');
     const [memeTLDR, setmemeTLDR] = useState('');
     const [memeDate, setmemeDate] = useState((new Date()).toISOString().substr(0,10));
     const [memeDesc, setmemeDesc] = useState('');
     const [memeImg, setmemeImg] = useState('');
+
     const handleImageAsFile = (event) => {
         const image = event.target.files[0];
         setmemeImg(image);
     }
+
+    const [user] = useAuthState(auth);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -39,13 +42,15 @@ const AddMemePage = (props) => {
                 name: memeName,
                 tldr: memeTLDR,
                 desc: memeDesc,
+                submitter: user.uid,
                 date: new Date(memeDate),
                 image: hasImage ? imagePath : "default",
                 visits: 0,
                 random: Math.random(),
             });
 
-            props.history.push(`/meme?id=${docRef.id}`)
+            window.history.pushState('','',`/meme/${docRef.id}`);
+            window.history.go();
         }
 
 
@@ -75,5 +80,5 @@ const AddMemePage = (props) => {
 
 }
 
-export default withRouter(AddMemePage);
+export default AddMemePage;
 

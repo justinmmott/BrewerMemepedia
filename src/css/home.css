@@ -1,12 +1,17 @@
 
 .homePage {
-    color: var(--text-primary);
-    background-color: var(--bg-primary);
+    height: 100vh;
     margin: 0;
     padding: 0;
 }
 
+body{
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+}
+
 main {
+    min-height: 100%;
     margin-left: 6rem;
     padding: 1rem;
 }

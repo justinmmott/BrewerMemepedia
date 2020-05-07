@@ -1,70 +1,64 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
 import Loader from 'react-loader-spinner'
 
 import MemeCard from './MemeCard';
-import Meme from './Meme';
 import { db } from './../firebase/firebase';
 import './../css/mainpage.css';
 
 const MainPage = () => {
     const [memes, setMemes] = useState([]);
-    const [memeId, setMemeId] = useState('');
-    const [loading, setLoading] = useState(true);
+    const [search, setSearch] = useState('');
+    const [gotNoMemes, setGotNoMemes] = useState(false);
 
     useEffect(() => {
-        if (memes.length === 0) getMemes();
+        if (search.length === 0) getMemesInit();
+    }, [search]);
 
-        window.onpopstate = () => {
-            setLoading(true);
-            setMemeId('');
-        };
-    }, [memes]);
-
-    const getMemes = async () => {
-        let query = await db.collection('memes').orderBy('visits', "desc").limit(18).get();
+    const getMemesInit = async () => {
+        let query = await db.collection('memes').orderBy('visits', "desc").limit(10).get();
         query.forEach((doc) => {
             setMemes(memes => [...memes, doc]);
         });
     };
 
-    const useQuery = () => {
-        return new URLSearchParams(useLocation().search);
+    const getMemesSearch = async (searchQuery) => {
+        setSearch(searchQuery);
+        let query = await db.collection('memes').where("searchStrings", "array-contains", searchQuery.toLowerCase()).limit(10).get();
+        let temp = []
+        let hasMemes = false;
+        query.forEach((doc) => {
+            hasMemes = true;
+            temp.push(doc);
+        });
+        if (!hasMemes || searchQuery.length === 0) setGotNoMemes(true);
+        setMemes(temp);
     };
 
-    const useMemeId = async () => {
-        let id = useQuery().get("id");
-
-        if(!loading) return;
-
-        if (!id) {
-            setLoading(false);
-            return;
-        }
-
-        let doc = await db.collection("memes").doc(id).get();
-
-        if (doc.exists) {
-            setMemeId(id);
-            setLoading(false);
-        }
-    }
-
-    useMemeId();
     return (
-        loading ?
-            <div className="loader-wrapper">
-                <Loader type="Oval" color="#69abed" className="loader" />
+        <React.Fragment>
+            <div className="search-wrapper">
+                <div className="search-input" >
+                    <div className="fas fa-search search-icon"></div>
+                    <input id="search-bar" type="text" value={search} onChange={(event) => getMemesSearch(event.target.value)} />
+                </div>
             </div>
-            :
-            memeId ?
-                <Meme meme={memeId} />
+            {memes.length === 0 ?
+                gotNoMemes ?
+                    <div className="loader-wrapper">
+                        No results
+                    </div>
+                    :
+                    <div className="loader-wrapper">
+                        <Loader type="Oval" color="#69abed" className="loader" />
+                    </div>
                 :
                 <div className="cards">
                     {memes.map(function (doc) {
-                        return <MemeCard meme={doc.data()} id={doc.id} loader={setLoading} key={doc.id} />
+                        return <MemeCard meme={doc.data()} id={doc.id} key={doc.id} />
                     })}
                 </div>
+            }
+        </React.Fragment>
     );
 }
 

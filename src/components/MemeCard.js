@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { A } from "hookrouter";
 import Loader from 'react-loader-spinner'
 
 import './../css/memecard.css'
@@ -20,7 +20,7 @@ const MemeCard = (props) => {
 
     return (
         <div className="card-wrapper">
-            <Link to={`/meme?id=${props.id}`} onClick={() => {props.loader(true)}} className="link">
+            <A href={`/meme/${props.id}`} className="link">
                 <div className="card-shadow">
                     <div className="card">
                         {!picture ?
@@ -35,7 +35,7 @@ const MemeCard = (props) => {
                         </div>
                     </div>
                 </div>
-            </Link>
+            </A>
         </div>
     );
 
