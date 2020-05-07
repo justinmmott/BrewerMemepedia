@@ -72,11 +72,11 @@ const Meme = (props) => {
                         style={{ height: "50vh" }}
                         onChange={({ text }) => setDesc(text)}
                     />
-                    <div className="login-input" >
+                    <div className="edit-input" >
                         Name
                         <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
                     </div>
-                    <div className="login-input" >
+                    <div className="edit-input" >
                         TL;DR
                         <input type="text" value={tldr} onChange={(event) => setTldr(event.target.value)} />
                     </div>
