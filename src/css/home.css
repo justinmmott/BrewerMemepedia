@@ -20,6 +20,7 @@ main {
     position: fixed;
     background-color: var(--bg-secondary);
     transition: width 200ms ease;
+    z-index: 1;
 }
 
 .navbar-nav {
